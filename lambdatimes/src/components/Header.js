@@ -17,9 +17,7 @@ const HeaderSec = styled.div`
   margin-top: 44px;
   padding-bottom: 15px;
   @media (min-width: 1280px) {
-    .header {
-      width: 1280px;
-    }
+    width: 1280px;
   }
 `;
 
@@ -48,9 +46,8 @@ const Temp = styled.span`
 const Header = () => {
   return (
     <HeaderSec>
-      <Date>SMARCH 32, 2018</Date>
-      <Heading>Lambda Times</Heading>
-      <Temp>98°</Temp>
+      <Date> SMARCH 32, 2018 </Date> <Heading> Lambda Times </Heading>
+      <Temp> 98° </Temp>
     </HeaderSec>
   );
 };
