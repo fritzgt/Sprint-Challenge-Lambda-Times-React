@@ -6,34 +6,48 @@ export default class Carousel extends Component {
     super(props);
     this.state = {
       carouselData: "",
-      currentImg: null,
+
       currentImg: null
     };
   }
   componentDidMount() {
     this.setState({
       carouselData: carouselData,
-      imgLength: carouselData.length,
+
       currentImg: 0
     });
   }
 
   leftClick = () => {
-    console.log("Current IMG" + this.state.currentImg);
+    // console.log("Current IMG" + this.state.currentImg);
+    const imgLength = this.state.carouselData.length - 1;
     this.setState(prevState => {
-      return {
-        currentImg: this.state.currentImg - 1
-      };
+      if (this.state.currentImg > 0) {
+        return {
+          currentImg: this.state.currentImg - 1
+        };
+      } else {
+        return {
+          currentImg: imgLength
+        };
+      }
     });
   };
 
   rightClick = () => {
-    console.log("Current IMG" + this.state.currentImg);
-    // console.log("Current IMG" + this.state.carouselData[this.state.currentImg]);
+    // console.log("Current IMG" + this.state.currentImg);
+    const imgLength = this.state.carouselData.length - 2;
+    // console.log("Current " + this.state.carouselData[this.state.currentImg]);
     this.setState(prevState => {
-      return {
-        currentImg: this.state.currentImg + 1
-      };
+      if (this.state.currentImg <= imgLength) {
+        return {
+          currentImg: prevState.currentImg + 1
+        };
+      } else {
+        return {
+          currentImg: 0
+        };
+      }
     });
   };
 
@@ -52,6 +66,7 @@ export default class Carousel extends Component {
         <div className="left-button" onClick={this.leftClick}>
           {"<"}
         </div>
+        {this.selectedImage()}
         <div className="right-button" onClick={this.rightClick}>
           {">"}
         </div>
