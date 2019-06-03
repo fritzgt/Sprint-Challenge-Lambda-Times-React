@@ -6,22 +6,26 @@ export default class Carousel extends Component {
     super(props);
     this.state = {
       carouselData: "",
-
       currentImg: null
     };
   }
   componentDidMount() {
     this.setState({
       carouselData: carouselData,
-
       currentImg: 0
     });
+    window.addEventListener("onbeforeunload", this.autoCounter());
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("beforeunload", this.autoCounter());
   }
 
   leftClick = () => {
     // console.log("Current IMG" + this.state.currentImg);
     const imgLength = this.state.carouselData.length - 1;
-    this.setState(prevState => {
+    this.setState(() => {
+      // creating if statement to avoid going over the current amount of img in the array
       if (this.state.currentImg > 0) {
         return {
           currentImg: this.state.currentImg - 1
@@ -38,10 +42,11 @@ export default class Carousel extends Component {
     // console.log("Current IMG" + this.state.currentImg);
     const imgLength = this.state.carouselData.length - 2;
     // console.log("Current " + this.state.carouselData[this.state.currentImg]);
-    this.setState(prevState => {
+    this.setState(() => {
+      // creating if statement to avoid going over the current amount of img in the array
       if (this.state.currentImg <= imgLength) {
         return {
-          currentImg: prevState.currentImg + 1
+          currentImg: this.state.currentImg + 1
         };
       } else {
         return {
@@ -51,11 +56,18 @@ export default class Carousel extends Component {
     });
   };
 
+  //creating an automatic carousel using componentDidMount to call the method
+  autoCounter = () => {
+    setInterval(() => this.rightClick(), 5000);
+  };
+
   selectedImage = () => {
     return (
       <img
+        // rendering the src base on the array of images and the idex set by the above functions < >
         src={this.state.carouselData[this.state.currentImg]}
         style={{ display: "block" }}
+        alt={this.state.carouselData[this.state.currentImg]}
       />
     );
   };
