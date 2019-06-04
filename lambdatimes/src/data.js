@@ -3,8 +3,7 @@
 
 export const tabData = ['all', 'javascript', 'technology', 'node', 'React.js', 'bootstrap'];
 
-export const cardData = [
-  {
+export const cardData = [{
     headline: "ES8: The Next Step in the Evolution of Javascript and What it Means For Your Projects",
     tab: "javascript",
     img: "./assets/sir.jpg",
