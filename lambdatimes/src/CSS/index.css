@@ -317,6 +317,7 @@ body {
   position: relative;
   overflow: hidden;
   margin-top: 16px;
+  z-index: 1;
 }
 
 @media (min-width: 1200px) {

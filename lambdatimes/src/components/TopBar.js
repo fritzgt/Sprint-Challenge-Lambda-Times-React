@@ -12,6 +12,8 @@ const NavBar = styled.div`
   position: fixed;
   height: 44px;
   background-color: #333;
+  z-index: 5;
+
   @media (min-width: 1280px) {
     width: 1280px;
   }
@@ -88,20 +90,17 @@ const TopBar = () => {
     <NavBar>
       <Container>
         <ContainerLeft>
-          <Spanleft>TOPICS</Spanleft>
-          <Spanleft>SEARCH</Spanleft>
-        </ContainerLeft>
+          <Spanleft> TOPICS </Spanleft> <Spanleft> SEARCH </Spanleft>{" "}
+        </ContainerLeft>{" "}
         <ContainerCenter>
-          <SpanCenter>GENERAL</SpanCenter>
-          <SpanCenter>BROWNBAG</SpanCenter>
-          <SpanCenter>RANDOM</SpanCenter>
-          <SpanCenter>MUSIC</SpanCenter>
-          <SpanCenter>ANNOUNCEMENTS</SpanCenter>
-        </ContainerCenter>
+          <SpanCenter> GENERAL </SpanCenter> <SpanCenter> BROWNBAG </SpanCenter>{" "}
+          <SpanCenter> RANDOM </SpanCenter> <SpanCenter> MUSIC </SpanCenter>{" "}
+          <SpanCenter> ANNOUNCEMENTS </SpanCenter>{" "}
+        </ContainerCenter>{" "}
         <ContainerRight>
-          <SpanRight>LOG IN</SpanRight>
-        </ContainerRight>
-      </Container>
+          <SpanRight> LOG IN </SpanRight>{" "}
+        </ContainerRight>{" "}
+      </Container>{" "}
     </NavBar>
   );
 };
